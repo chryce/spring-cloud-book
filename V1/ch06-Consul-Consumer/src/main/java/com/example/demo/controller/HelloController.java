@@ -24,12 +24,14 @@ public class HelloController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    // http://localhost:8506/instances-lists
     /**获取所有服务提供者 */
     @GetMapping("/instances-lists")
     public Object instancesLists() {
         return discoveryClient.getInstances("service-provider");
     }
 
+    // http://localhost:8506/services-lists
     /** 获取所有注册服务名称     */
     @GetMapping("/services-lists")
     public Object servicesLists() {
@@ -39,6 +41,7 @@ public class HelloController {
 
     /**
      * 从所有服务中选择一个服务（轮询）
+     *  http://localhost:8506/poll-service
      */
     @GetMapping("/poll-service")
     public Object pollService() {
@@ -47,6 +50,7 @@ public class HelloController {
 
     /**
      * 调用服务提供者接口
+     *  http://localhost:8506/hello
      */
     @GetMapping("/hello")
     public String hello() {
