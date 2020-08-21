@@ -11,13 +11,11 @@ import static org.junit.Assert.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class propertTest {
+public class PropertTest {
 
-    //获取配置文件中的age
     @Value("${age}")
     private int age;
 
-    //获取配置文件中的name
     @Value("${name}")
     private String name;
 

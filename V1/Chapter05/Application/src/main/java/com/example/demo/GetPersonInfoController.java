@@ -8,11 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GetPersonInfoController {
 
-    //获取配置文件中的age
+
+    @Autowired
+    private GetPersonInfoProperties getPersonInfoProperties;
+
+
     @Value("${age}")
     private int age;
 
-    //获取配置文件中的name
     @Value("${name}")
     private String name;
 
@@ -26,8 +29,6 @@ public class GetPersonInfoController {
         return name;
     }
 
-    @Autowired
-    private GetPersonInfoProperties getPersonInfoProperties;
 
     @GetMapping("/getpersonproperties")
     public String getpersonproperties() {
