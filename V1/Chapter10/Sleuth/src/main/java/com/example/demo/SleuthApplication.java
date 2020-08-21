@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class SleuthApplication {
+    private static Logger log = LoggerFactory.getLogger(SleuthApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(SleuthApplication.class, args);
-	}
-	private static Logger log = LoggerFactory.getLogger(SleuthApplication.class);
+    public static void main(String[] args) {
+        SpringApplication.run(SleuthApplication.class, args);
+    }
 
-@GetMapping("/hello")
-	public String home() {
-		log.info("处理 hello页");
-		return "Hello World";
-	}
+    @GetMapping("/hello")
+    public String home() {
+        log.info("处理 hello页");
+        return "Hello World";
+    }
 }

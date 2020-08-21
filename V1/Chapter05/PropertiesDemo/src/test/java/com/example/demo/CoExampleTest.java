@@ -10,16 +10,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Copyright (C), 2019-2019, XXX有限公司
- * FileName: CoExampleTest
- * Author:   longzhonghua
- * Date:     2019/4/28 14:59
- * Description:
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class CoExampleTest {
