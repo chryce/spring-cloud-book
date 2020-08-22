@@ -9,11 +9,11 @@ import java.util.List;
 public class MyRule implements IRule {
     ILoadBalancer lb;
 
-    public MyRule(){
+    public MyRule() {
 
     }
 
-    public MyRule(ILoadBalancer lb){
+    public MyRule(ILoadBalancer lb) {
         this.lb = lb;
     }
 

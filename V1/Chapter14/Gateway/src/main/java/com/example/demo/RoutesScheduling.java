@@ -31,16 +31,24 @@ import java.util.List;
 public class RoutesScheduling {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    /**设置路由服务器的id*/
+    /**
+     * 设置路由服务器的id
+     */
     private static final String routeServer = "route-server";
-    /**设置本地路由信息的版本号为0*/
+    /**
+     * 设置本地路由信息的版本号为0
+     */
     private static Long versionId = 0L;
+
     @Autowired
     private RestTemplate restTemplate;
+
     @Autowired
     private RouteService routeService;
 
-    /**计划任务，每60秒中执行一次，如果版本号不相等则获取最新路由信息并更新网关路由*/
+    /**
+     * 计划任务，每60秒中执行一次，如果版本号不相等则获取最新路由信息并更新网关路由
+     */
     @Scheduled(cron = "*/10 * * * * ?")
     public void getRoutes() {
         try {
@@ -75,10 +83,12 @@ public class RoutesScheduling {
     }
 
 
-    /**转换路由对象*/
+    /**
+     * 转换路由对象
+     */
     private RouteDefinition assembleRouteDefinition(GatewayRouteDefinition gatewayRouteDefinition) {
         //实例化RouteDefinition
-        RouteDefinition  routeDefinition = new RouteDefinition();
+        RouteDefinition routeDefinition = new RouteDefinition();
         //初始化RouteDefinition
         routeDefinition.setId(gatewayRouteDefinition.getId());
         routeDefinition.setOrder(gatewayRouteDefinition.getOrder());

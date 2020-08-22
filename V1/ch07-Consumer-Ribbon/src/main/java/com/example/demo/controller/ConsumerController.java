@@ -11,19 +11,15 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumerController {
 
     @Autowired
-    HelloRemote HelloRemote;
+    public HelloRemote HelloRemote;
 
     @Autowired
     RestTemplate restTemplate;
 
     @RequestMapping("/hello/{name}")
     public String index(@PathVariable("name") String name) {
-
         return HelloRemote.hello(name);
-
 //        return restTemplate.getForEntity("http://producer/hello?name=123", String.class).getBody();
-
-
     }
 
 }

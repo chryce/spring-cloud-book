@@ -21,12 +21,15 @@ import java.util.HashMap;
  */
 @Configuration
 @EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled=true)//判断用户对某个控制层的方法是否具有访问权限
+@EnableGlobalMethodSecurity(prePostEnabled = true)//判断用户对某个控制层的方法是否具有访问权限
 public class ResourceConfig extends ResourceServerConfigurerAdapter {
+
     @Autowired
     private AuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
     @Autowired
     private AuthenticationFailureHandler myAuthenticationFailHander;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
@@ -43,6 +46,6 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
                 put("status", 403);
                 put("error", "没有权限");
             }}));
-        })  .and().authorizeRequests().antMatchers("/noauth").permitAll();
+        }).and().authorizeRequests().antMatchers("/noauth").permitAll();
     }
 }

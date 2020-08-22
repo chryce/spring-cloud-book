@@ -5,8 +5,8 @@ import com.netflix.loadbalancer.Server;
 import org.springframework.stereotype.Component;
 
 /*
-* 自定义Ping
-*/
+ * 自定义Ping
+ */
 @Component
 public class MyCustomPing implements IPing {
     @Override

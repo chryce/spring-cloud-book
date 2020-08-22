@@ -7,16 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * @author: longzhonghua
- * @date: 2019/10/3
- * Description:
- */
 @RestController
 public class HelloController {
 
     @Autowired
     private RestTemplate restTemplate;
+
     @Autowired
     private MyFeignClient myFeignClient;
 
@@ -24,6 +20,7 @@ public class HelloController {
     public String rest(@PathVariable String str) {
         return restTemplate.getForObject("http://example-provider/hello/" + str, String.class);
     }
+
     @GetMapping(value = "/hello-feign/{str}")
     public String feign(@PathVariable String str) {
         return myFeignClient.echo(str);

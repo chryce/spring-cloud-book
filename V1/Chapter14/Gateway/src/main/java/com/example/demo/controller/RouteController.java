@@ -18,7 +18,7 @@ public class RouteController {
 
     //获取网关所有的路由信息
     @RequestMapping("/routes")
-    public Flux<RouteDefinition> getRouteDefinitions(){
+    public Flux<RouteDefinition> getRouteDefinitions() {
         return routeDefinitionLocator.getRouteDefinitions();
     }
 }
