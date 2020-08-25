@@ -17,9 +17,6 @@ public class ConsumerApplication {
         SpringApplication.run(ConsumerApplication.class, args);
     }
 
-    /**
-     * @LoadBalanced注解，表示开启客户端负载均衡
-     */
     @LoadBalanced
     @Bean
     RestTemplate restTemplate() {

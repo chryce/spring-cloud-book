@@ -15,8 +15,10 @@ import sun.rmi.server.LoaderHandler;
  */
 @RestController
 public class HelloController {
+
     @Autowired
     private RestTemplate restTemplate;
+
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 

@@ -4,7 +4,7 @@ import com.example.demo.config.FeignConfiguration;
 import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(contextId = "feignClient", name = "service-producer", configuration = FeignConfiguration.class)
+@FeignClient(contextId = "feignClient", name = "service-provider", configuration = FeignConfiguration.class)
 public interface MyFeignClient {
     /**
     * Spring MVC注解修改为Feign自带的注解；

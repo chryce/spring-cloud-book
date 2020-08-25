@@ -20,9 +20,6 @@ public class ConsumerApplication {
      * @LoadBalanced注解，表示开启客户端负载均衡
      */
     @LoadBalanced
-    /**
-     * 实例化RestTemplate
-     */
     @Bean
     RestTemplate restTemplate() {
         return new RestTemplate();

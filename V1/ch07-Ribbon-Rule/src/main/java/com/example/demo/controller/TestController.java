@@ -26,9 +26,11 @@ public class TestController {
     SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
 
     @GetMapping("/test")
-    public void test() {
-        ServiceInstance serviceInstance = loadBalancerClient.choose("provider");
-        System.out.println(serviceInstance.getHost() + serviceInstance.getPort() + " " + sdf.format(date));
+    public String test() {
+        ServiceInstance serviceInstance = loadBalancerClient.choose("order-provider");
+        String ret = serviceInstance.getHost() + ":" + serviceInstance.getPort() + " " + sdf.format(date);
+        System.out.println(ret);
+        return ret;
     }
 
 

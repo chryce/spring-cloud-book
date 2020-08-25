@@ -17,14 +17,11 @@ public class TestController {
     private LoadBalancerClient loadBalancerClient;
 
     @GetMapping("/test")
-    public void LoadInstance() {
-        /*
-         * restTemplate.getForObject()与loadBalancerClient.choose不能放在一个方法中，因为restTemplate.getForObject()包含了choose方法
-         *
-         * */
-        ServiceInstance serviceInstance = loadBalancerClient.choose("producer");
-        System.out.println(serviceInstance.getHost() + serviceInstance.getPort());
+    public String LoadInstance() {
+        //restTemplate.getForObject()与loadBalancerClient.choose不能放在一个方法中，因为restTemplate.getForObject()包含了choose方法
+
+        ServiceInstance serviceInstance = loadBalancerClient.choose("my-service");
+        String ret = serviceInstance.getHost() + ":" + serviceInstance.getPort();
+        return ret;
     }
-
-
 }

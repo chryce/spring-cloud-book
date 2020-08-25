@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(name = "provider")
 public interface HelloClient {
 
-    @RequestMapping(value = "/hello")
-    public String sayHello();
+    @RequestMapping(value = "/serverInfo")
+    public String serverInfo();
 }

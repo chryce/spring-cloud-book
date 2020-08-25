@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>Gateway Configuration  Fault-Tolerance Routing Hystrix</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Gateway Configuration file</name>
+	<name>Gateway Configuration  Fault-Tolerance Routing Hystrix</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

@@ -5,13 +5,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+/**
+ * * 依赖项目：ch06-Consul-Provider
+ * @author hurui
+ */
 @EnableDiscoveryClient
 @EnableFeignClients
 @SpringBootApplication
 public class FeignConfigurationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FeignConfigurationApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(FeignConfigurationApplication.class, args);
+    }
 
 }

@@ -8,22 +8,20 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * @author hurui
+ * 依赖项目：ch06-Consul-Provider
+ */
 @SpringBootApplication
-
 public class ConsumerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConsumerApplication.class, args);
-	}
-	/**
-	 * @LoadBalanced注解，表示开启客户端负载均衡
-	 */
-	@LoadBalanced
-	/**
-	 * 实例化RestTemplate
-	 */
-	@Bean
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication.class, args);
+    }
+
+    @LoadBalanced
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }

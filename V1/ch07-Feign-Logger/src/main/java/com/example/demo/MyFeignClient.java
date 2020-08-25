@@ -9,12 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @date: 2019/9/20
  * Description: 调用服务接口
  */
-@FeignClient(contextId = "feignClient", name = "service-producer", configuration = FeignConfiguration.class)
+@FeignClient(contextId = "feignClient", name = "service-provider", configuration = FeignConfiguration.class)
 public interface MyFeignClient {
 
     @GetMapping(value = "/hello")
-    /**
-     * 调用服务接口
-     */
     public String hello();
 }

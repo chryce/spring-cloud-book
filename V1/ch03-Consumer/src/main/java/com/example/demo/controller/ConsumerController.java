@@ -16,8 +16,8 @@ public class ConsumerController {
         this.helloClient = helloClient;
     }
 
-    @RequestMapping("/hello")
+    @RequestMapping("/serverInfo")
     public String index() {
-        return helloClient.sayHello();
+        return helloClient.serverInfo();
     }
 }

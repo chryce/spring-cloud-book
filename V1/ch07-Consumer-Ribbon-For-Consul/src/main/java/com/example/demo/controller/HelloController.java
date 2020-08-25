@@ -7,7 +7,9 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
 import java.net.URI;
+
 /**
  * @author: longzhonghua
  * @date: 2019/9/20
@@ -18,19 +20,22 @@ public class HelloController {
 
     @Autowired
     private LoadBalancerClient loadBalancer;
+
     @Autowired
     private DiscoveryClient discoveryClient;
 
     /**
      * 获取所有服务提供者
+     * http://localhost:9002/instances-lists
      */
     @GetMapping("/instances-lists")
     public Object instancesLists() {
-        return discoveryClient.getInstances("service-producer");
+        return discoveryClient.getInstances("service-provider");
     }
 
     /**
      * 获取所有注册服务名称
+     *  http://localhost:9002/services-lists
      */
     @GetMapping("/services-lists")
     public Object servicesLists() {
@@ -40,18 +45,20 @@ public class HelloController {
 
     /**
      * 从所有服务中选择一个服务（轮询）
+     *  http://localhost:9002/poll-service
      */
     @GetMapping("/poll-service")
     public Object pollService() {
-        return loadBalancer.choose("service-producer").getUri().toString();
+        return loadBalancer.choose("service-provider").getUri().toString();
     }
 
     /**
      * 调用服务提供者接口
+     *  http://localhost:9002/hello
      */
     @GetMapping("/hello")
     public String hello() {
-        ServiceInstance serviceInstance = loadBalancer.choose("service-producer");
+        ServiceInstance serviceInstance = loadBalancer.choose("service-provider");
         URI uri = serviceInstance.getUri();
         String callService = new RestTemplate().getForObject(uri + "/hello", String.class);
         System.out.println(callService);

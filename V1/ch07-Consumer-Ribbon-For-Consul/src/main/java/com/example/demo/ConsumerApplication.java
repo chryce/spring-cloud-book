@@ -8,20 +8,21 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication
 
+/**
+ * @author hurui
+ * 依赖项目：ch06-Consul-Provider
+ */
+@SpringBootApplication
 public class ConsumerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConsumerApplication.class, args);
-	}
-/*	*//**
-	 * @LoadBalanced注解，表示开启客户端负载均衡
-	 *//*
-	@LoadBalanced
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication.class, args);
+    }
 
-	@Bean
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}*/
+    @LoadBalanced
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }
