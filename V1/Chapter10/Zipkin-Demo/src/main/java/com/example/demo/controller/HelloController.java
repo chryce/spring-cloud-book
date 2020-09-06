@@ -20,6 +20,8 @@ import java.net.URI;
  */
 @RestController
 public class HelloController {
+    private static String serviceId = "service-provider";
+
     private static Logger log = LoggerFactory.getLogger(ZipkinDemoApplication.class);
 
     @Autowired
@@ -33,7 +35,7 @@ public class HelloController {
      */
     @GetMapping("/instances-lists")
     public Object instancesLists() {
-        return discoveryClient.getInstances("service-producer");
+        return discoveryClient.getInstances(serviceId);
     }
 
     /**
@@ -57,7 +59,7 @@ public class HelloController {
      */
     @GetMapping("/poll-service")
     public Object pollService() {
-        return loadBalancer.choose("service-producer").getUri().toString();
+        return loadBalancer.choose(serviceId).getUri().toString();
     }
 
     /**
@@ -65,7 +67,7 @@ public class HelloController {
      */
     @GetMapping("/hello")
     public String hello() {
-        ServiceInstance serviceInstance = loadBalancer.choose("service-producer");
+        ServiceInstance serviceInstance = loadBalancer.choose(serviceId);
         URI uri = serviceInstance.getUri();
         String callService = new RestTemplate().getForObject(uri + "/hello", String.class);
         log.info(callService);

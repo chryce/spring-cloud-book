@@ -19,9 +19,12 @@ import org.springframework.context.annotation.Bean;
 
 public class HystrixDashboardApplication {
 
+    //http://localhost:9902/hystrix
+    // 输入url监控：http://localhost:9902/actuator/hystrix.stream
     public static void main(String[] args) {
         SpringApplication.run(HystrixDashboardApplication.class, args);
     }
+
 
     /**
      * 配置servlet

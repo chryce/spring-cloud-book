@@ -17,19 +17,25 @@ import javax.annotation.Resource;
 @Slf4j
 @RequestMapping("/routes")
 public class RoutesController {
+
     @Resource
     private RoutesService routesService;
+
     @Resource
     private GatewayRoutesMapper gatewayRoutesMapper;
+
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
-    /**获取所有动态路由信息*/
+
+    /**
+     * 获取所有动态路由信息
+     */
     @RequestMapping("/")
     public String synRouteDefinitions() {
         /*从redis中获取路由信息*/
         String result = stringRedisTemplate.opsForValue().get(RedisConfig.routeKey);
         if (!StringUtils.isEmpty(result)) {
-       //返回Redis 中的路由信息
+            //返回Redis 中的路由信息
         } else {
             //返回MySQL中的路由信息
             result = JSON.toJSONString(routesService.getRouteDefinitions());
@@ -39,6 +45,7 @@ public class RoutesController {
         log.info("路由信息：" + result);
         return result;
     }
+
     //添加路由信息
     @PostMapping(value = "/add")
     public String add(@RequestBody Routes route) {

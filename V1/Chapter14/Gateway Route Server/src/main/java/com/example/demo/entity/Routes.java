@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
+
 //@Data
 public class Routes {
 
@@ -29,11 +30,12 @@ public class Routes {
 
     /**
      * 获取断言集合
+     *
      * @return
      */
-    public List<GatewayPredicateDefinition> getPredicateDefinition(){
-        if(!StringUtils.isEmpty(this.predicates)){
-            return JSON.parseArray(this.predicates , GatewayPredicateDefinition.class);
+    public List<GatewayPredicateDefinition> getPredicateDefinition() {
+        if (!StringUtils.isEmpty(this.predicates)) {
+            return JSON.parseArray(this.predicates, GatewayPredicateDefinition.class);
         }
         return null;
     }
@@ -41,9 +43,9 @@ public class Routes {
     /**
      * 获取过滤器集合
      */
-    public List<GatewayFilterDefinition> getFilterDefinition(){
-        if(!StringUtils.isEmpty(this.filters)){
-            return JSON.parseArray(this.filters , GatewayFilterDefinition.class);
+    public List<GatewayFilterDefinition> getFilterDefinition() {
+        if (!StringUtils.isEmpty(this.filters)) {
+            return JSON.parseArray(this.filters, GatewayFilterDefinition.class);
         }
         return null;
     }
@@ -79,7 +81,6 @@ public class Routes {
     public void setRouteOrder(Integer routeOrder) {
         this.routeOrder = routeOrder;
     }
-
 
 
     public Date getCreateTime() {

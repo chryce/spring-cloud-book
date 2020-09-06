@@ -57,7 +57,7 @@ public class RoutesScheduling {
             Long lastVersionId = restTemplate.getForObject("http://" + routeServer + "/version/lastVersion", Long.class);
             log.info("路由版本信息：本地版本号：" + versionId + "，远程版本号：" + lastVersionId);
             /*判断路由版本情况，如果不为空且版本号不等于远程版本，则去路由服务器获取路由信息*/
-            if (lastVersionId != null && versionId != lastVersionId) {
+            if (lastVersionId != null && !versionId.equals(lastVersionId)) {
                 //获取路由信息
                 String routesResult = restTemplate.getForObject("http://" + routeServer + "/routes/", String.class);
                 /**获取的路由信息不为空，则更新路由信息*/

@@ -26,14 +26,19 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/version")
 public class VersionController {
+
     @Autowired
     private StringRedisTemplate redisTemplate;
+
     @Resource
     private VersionMapper versionMapper;
+
     @Resource
     private GatewayRoutesMapper gatewayRoutesMapper;
+
     @Resource
     private RoutesService routesService;
+
     //获取最后一次发布的版本号
     @GetMapping(value = "/lastVersion")
     public Long getLastVersion() {

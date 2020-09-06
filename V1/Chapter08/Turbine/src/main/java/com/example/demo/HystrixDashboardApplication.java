@@ -20,6 +20,8 @@ import org.springframework.context.annotation.Bean;
 @EnableTurbine
 public class HystrixDashboardApplication {
 
+    // http://localhost:9903/hystrix
+    // http://localhost:9903/turbine.stream
     public static void main(String[] args) {
         SpringApplication.run(HystrixDashboardApplication.class, args);
     }

@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableScheduling
 @EnableDiscoveryClient
 @SpringBootApplication
-
 public class GatewayApplication {
 
 	public static void main(String[] args) {

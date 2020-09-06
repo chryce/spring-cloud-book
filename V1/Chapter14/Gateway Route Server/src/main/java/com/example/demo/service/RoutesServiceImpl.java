@@ -20,13 +20,17 @@ public class RoutesServiceImpl implements RoutesService {
     @Resource
     private GatewayRoutesMapper gatewayRoutesMapper;
 
-    /**查询路由信息     */
+    /**
+     * 查询路由信息
+     */
     @Override
     public List<Routes> getRoutes(Routes route) {
         return gatewayRoutesMapper.getRoutes(route);
     }
 
-    /**返回网关需要的路由信息     */
+    /**
+     * 返回网关需要的路由信息
+     */
     @Override
     public List<GatewayRouteDefinition> getRouteDefinitions() {
         List<GatewayRouteDefinition> routeDefinitions = new ArrayList<>();
