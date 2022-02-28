@@ -22,7 +22,7 @@ public class GatewayApplication {
                  *    匹配规则：** ：匹配多级
                  *             *： 匹配单级
                  */
-                .route("r001", r -> r.path("/hello/**").uri("http://localhost:9102/hello"))
+                .route("r001", r -> r.path("/hello/**").uri("http://localhost:9000/hello"))
                 // http://localhost:9001/hello/       --> http://localhost:9102/hello/
                 // http://localhost:9001/hello        --> http://localhost:9102/hello
                 // http://localhost:9001/hello/p1/p2  --> http://localhost:9102/hello/p1/p2

@@ -16,6 +16,12 @@ public class HelloController {
     @Value("${server.port}")
     private String port;
 
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello World";
+    }
+
     @RequestMapping("/serverInfo")
     public String serverInfo() {
         String str = "provider:" + name + " port:" + port;

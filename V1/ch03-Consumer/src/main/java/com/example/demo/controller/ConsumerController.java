@@ -20,4 +20,10 @@ public class ConsumerController {
     public String index() {
         return helloClient.serverInfo();
     }
+
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello World";
+    }
 }
