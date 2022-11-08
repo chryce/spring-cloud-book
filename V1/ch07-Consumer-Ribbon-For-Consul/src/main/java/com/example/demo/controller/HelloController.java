@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -18,11 +17,15 @@ import java.net.URI;
 @RestController
 public class HelloController {
 
-    @Autowired
-    private LoadBalancerClient loadBalancer;
+    private String serviceId = "service-provider";
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
+    private final LoadBalancerClient loadBalancer;
+    private final DiscoveryClient discoveryClient;
+
+    public HelloController(LoadBalancerClient loadBalancer, DiscoveryClient discoveryClient) {
+        this.loadBalancer = loadBalancer;
+        this.discoveryClient = discoveryClient;
+    }
 
     /**
      * 获取所有服务提供者
@@ -30,7 +33,7 @@ public class HelloController {
      */
     @GetMapping("/instances-lists")
     public Object instancesLists() {
-        return discoveryClient.getInstances("service-provider");
+        return discoveryClient.getInstances(serviceId);
     }
 
     /**
@@ -49,7 +52,7 @@ public class HelloController {
      */
     @GetMapping("/poll-service")
     public Object pollService() {
-        return loadBalancer.choose("service-provider").getUri().toString();
+        return loadBalancer.choose(serviceId).getUri().toString();
     }
 
     /**
@@ -58,7 +61,7 @@ public class HelloController {
      */
     @GetMapping("/hello")
     public String hello() {
-        ServiceInstance serviceInstance = loadBalancer.choose("service-provider");
+        ServiceInstance serviceInstance = loadBalancer.choose(serviceId);
         URI uri = serviceInstance.getUri();
         String callService = new RestTemplate().getForObject(uri + "/hello", String.class);
         System.out.println(callService);

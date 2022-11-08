@@ -23,8 +23,6 @@ public class HelloController {
     /*提供的接口，用于返回信息*/
     @RequestMapping("/hello")
     public String hello() {
-        String str = "provider:" + name + " port:" + port;
-        //返回数据
-        return str;
+        return "provider:" + name + " port:" + port;
     }
 }

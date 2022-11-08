@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.HelloRemote;
+import com.example.demo.service.HelloRemote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,25 +20,33 @@ public class ConsumerController {
     @Autowired
     RestTemplate restTemplate;
 
+    /**
+     * http://localhost:20000/hello/fuck
+     *
+     * @param name
+     * @return
+     */
     @RequestMapping("/hello/{name}")
     public String index(@PathVariable("name") String name) {
         return HelloRemote.sayHello(name);
     }
 
-    @RequestMapping("/serverIfno")
-    public String serverInfo() {
 
-        UriComponents uriComponents = UriComponentsBuilder
-                .fromUriString("http://provider/sayHello?userName={userName}")
-                .build()
-                .expand("longzhonghua")
-                .encode();
+        /**
+         * http://localhost:20000/serverIfno
+         *
+         * @return
+         */
+        @RequestMapping("/serverIfno")
+        public String serverInfo() {
 
-        URI uri = uriComponents.toUri();
-        String strUrl = uri.toString();
-        //return restTemplate.getForObject("strUrl, String.class);
+            UriComponents uriComponents = UriComponentsBuilder.fromUriString("http://eureka-client-1/sayHello?userName={userName}").build().expand("longzhonghua").encode();
 
-        return restTemplate.getForObject("http://provider/" + "serverInfo", String.class);
-    }
+            URI uri = uriComponents.toUri();
+            String strUrl = uri.toString();
+            //return restTemplate.getForObject("strUrl, String.class);
+
+            return restTemplate.getForObject("http://eureka-client-1/" + "serverInfo", String.class);
+        }
 
 }
